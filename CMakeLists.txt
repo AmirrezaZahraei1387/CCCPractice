@@ -3,4 +3,4 @@ project(CCCPractice)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(CCCPractice 2022-S/GoodGroups.cpp)
+add_executable(CCCPractice 2022-S/GoodSamples.cpp)
