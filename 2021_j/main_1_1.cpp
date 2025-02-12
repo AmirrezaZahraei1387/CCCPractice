@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 
-using Grid = std::vector<int>;
 
 
 int main() {
@@ -14,7 +13,8 @@ int main() {
     std::cin >> column;
     std::cin >> op;
 
-    Grid g(row, 0);
+    std::vector<bool> g(row, false);
+    std::vector<bool> columns(column, false);
 
     char c{};
     int count{};
@@ -25,17 +25,32 @@ int main() {
 
         switch (c) {
             case 'C':
-                for (int i{0}; i < row; ++i) {
-
-                }
+                columns[count - 1] = !columns[count - 1];
                 break;
 
             case 'R':
-                g[count - 1] = column - g[count - 1];
+                g[count - 1]  = !g[count - 1];
                 break;
         }
 
     }
+
+    int anser{ 0 };
+
+    int r_{0};
+    int c_{0};
+
+    for(int i{ 0 }; i < row; ++i){
+        if(g[i])
+            ++r_;
+    }
+
+    for(int j{ 0 }; j < column; ++j){
+        if(columns[j])
+            ++c_;
+    }
+
+    std::cout<<c_ * row + r_ * column - 2 * r_ * c_<<std::endl;
 
     return 0;
 }
